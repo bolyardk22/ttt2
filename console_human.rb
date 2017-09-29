@@ -5,7 +5,7 @@ class Human
 		@marker = marker
 	end
 
-	def get_move(board)
+	def get_move(ttt_board)
 		puts "Make a move"
 		move = gets.chomp.to_i - 1
 

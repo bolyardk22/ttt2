@@ -27,7 +27,7 @@ class Board
 		end
 	end
 
-	def full_board
+	def full_board?
 		ttt_board.count('') == 0
 	end
 

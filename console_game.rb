@@ -1,5 +1,5 @@
 require_relative 'board.rb'
-require_relative 'player_classes.rb'
+require_relative 'console_human.rb'
 
 class Console_game
 	attr_accessor :player_1, :player_2, :board, :active_player, :move, :input1, :input2
@@ -8,7 +8,7 @@ class Console_game
 		@player_1 = get_player_1
 		@player_2 = get_player_2
 		@board = Board.new
-		@active_player = player_1
+		@active_player = player_2
 	end
 
 	def intro
