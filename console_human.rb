@@ -9,6 +9,9 @@ class Human
 		puts "Make a move"
 		move = gets.chomp.to_i - 1
 
+		#for the sequential one try making it go through the array using a .each do
+		#for the random one use a .sample
+
 		if ttt_board[move] == ""
 			move
 		else
