@@ -6,6 +6,7 @@ class Human
 	end
 
 	def get_move(ttt_board)
+		puts "It's #{marker}'s turn."
 		puts "Make a move"
 		move = gets.chomp.to_i - 1
 

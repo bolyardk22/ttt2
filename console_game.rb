@@ -1,5 +1,7 @@
 require_relative 'board.rb'
 require_relative 'console_human.rb'
+require_relative 'console_sequential.rb'
+require_relative 'console_random_ai.rb'
 
 class Console_game
 	attr_accessor :player_1, :player_2, :board, :active_player, :move, :input1, :input2
@@ -25,7 +27,6 @@ class Console_game
 		if check_winner || board.full_board?
 			puts "Game over."
 		else
-			puts "It's #{active_player.marker}'s turn."
 		end
 	end
 
@@ -78,7 +79,7 @@ class Console_game
 			@player_1 = Sequential.new('X')
 
 		elsif input1 == 3
-			@player_1 = RandomAI.new('X')
+			@player_1 = Random_AI.new('X')
 
 		else
 			puts "Invalid input."
@@ -103,7 +104,7 @@ class Console_game
 			@player_2 = Sequential.new('O')
 
 		elsif input2 == 3
-			@player_2 = RandomAI.new('O')
+			@player_2 = Random_AI.new('O')
 
 		else
 			puts "Invalid input."
