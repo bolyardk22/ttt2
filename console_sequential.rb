@@ -9,13 +9,14 @@ class Sequential
 		puts "It's #{marker}'s turn."
 
 		move = 0
-		loop do
+		9.times do
 			if ttt_board[move] == ""
-				break
 				move
+				break
 			else
 				move += 1
 			end
 		end
+		move
 	end
 end
