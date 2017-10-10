@@ -1,5 +1,5 @@
 class Impossible
-	attr_accessor :marker, :opponent, :center, :corners, :opposite_corners, :diagonals, :edges, :winning_spaces, :fork_spaces, :priorities
+	attr_accessor :marker, :opponent#, :center, :corners, :opposite_corners, :diagonals, :edges, :winning_spaces, :fork_spaces, :priorities
 
 	def get_opponent(marker)
 
@@ -17,27 +17,22 @@ class Impossible
       
     	@opponent = get_opponent(marker)
 
-    	@center = 4
+    	#@center = 4
 
-    	@corners = [0, 2, 6, 8]
+    	#@corners = [0, 2, 6, 8]
 
-   		@opposite_corners = { 0 => 8, 8 => 0, 2 => 6, 6 => 2}
+   		#@opposite_corners = { 0 => 8, 8 => 0, 2 => 6, 6 => 2}
 
-    	@diagonals = [[0, 4, 8], [2, 4, 6]]
+    	#@diagonals = [[0, 4, 8], [2, 4, 6]]
 
-    	@edge_spaces = [[1, 5, 7, 3]]
+    	#@edge_spaces = [[1, 5, 7, 3]]
 
-    	# spaces on board that will win
-    	@winning_spaces = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
+    	#@winning_spaces = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
 
-    	# spaces on board that will create a fork
-    	@fork_spaces = [[0, 2, 8], [2, 8, 6], [8, 6, 0], [6, 0, 2], [1, 2, 5], [5, 8, 7], [7, 6, 3], [3, 0, 1]]
+    	#@fork_spaces = [[0, 2, 8], [2, 8, 6], [8, 6, 0], [6, 0, 2], [1, 2, 5], [5, 8, 7], [7, 6, 3], [3, 0, 1]]
 
-    	# Order in which we should check for wins/forks
-    	@priorities = [[0, 1, 2], [0, 2, 1], [1, 2, 0]]
+    	#@priorities = [[0, 1, 2], [0, 2, 1], [1, 2, 0]]
     end
-
-
 
    	def get_win_or_block(ttt_board, player)
 
@@ -74,10 +69,7 @@ class Impossible
         [ttt_board[2], ttt_board[4], ttt_board[6]]
         ]
 
- 		# possible_diag_combos_on_board.each_with_index do |winning_combo_line, index_position_of_winning_array_set|
-
          possible_diag_combos = diagonals
-
 
         move = 10
 
@@ -105,7 +97,6 @@ class Impossible
         end
         move
     end
-    # get_force_def(['','','','','','','','',''],"X","O")
 
 
     def get_opposite_corner(ttt_board, opponent)
