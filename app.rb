@@ -2,7 +2,6 @@ require 'sinatra'
 enable :sessions
 require_relative 'web_board.rb'
 require_relative 'player_classes.rb'
-#require_relative 'derrickmademedothis.rb'
 
 get '/' do
 	session[:board] = Board.new
@@ -81,8 +80,6 @@ post '/human_move' do
 	 	redirect '/board'
 	end
 end
-
-
 
 get '/check_game_state' do
 	if session[:active_player] == nil
