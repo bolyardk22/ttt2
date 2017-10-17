@@ -17,21 +17,22 @@ class Impossible
       
     	@opponent = get_opponent(marker)
 
-    	#@center = 4
+    	#for tests
+    	@center = 4
 
-    	#@corners = [0, 2, 6, 8]
+    	@corners = [0, 2, 6, 8]
 
-   		#@opposite_corners = { 0 => 8, 8 => 0, 2 => 6, 6 => 2}
+   		@opposite_corners = { 0 => 8, 8 => 0, 2 => 6, 6 => 2}
 
-    	#@diagonals = [[0, 4, 8], [2, 4, 6]]
+    	@diagonals = [[0, 4, 8], [2, 4, 6]]
 
-    	#@edge_spaces = [[1, 5, 7, 3]]
+    	@edge_spaces = [[1, 5, 7, 3]]
 
-    	#@winning_spaces = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
+    	@winning_spaces = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
 
-    	#@fork_spaces = [[0, 2, 8], [2, 8, 6], [8, 6, 0], [6, 0, 2], [1, 2, 5], [5, 8, 7], [7, 6, 3], [3, 0, 1]]
+    	@fork_spaces = [[0, 2, 8], [2, 8, 6], [8, 6, 0], [6, 0, 2], [1, 2, 5], [5, 8, 7], [7, 6, 3], [3, 0, 1]]
 
-    	#@priorities = [[0, 1, 2], [0, 2, 1], [1, 2, 0]]
+    	@priorities = [[0, 1, 2], [0, 2, 1], [1, 2, 0]]
     end
 
    	def get_win_or_block(ttt_board, player)
