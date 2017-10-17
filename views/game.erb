@@ -25,5 +25,31 @@
 	</ul>
 </div>
 
+<center>
 <body>
-	<
+	<h3>Player <%= active_player %>, make your move!</h3>
+	<form method = 'post' action = '/human_move'>
+		<table id='ttt_board_in_game'>
+			<tr>
+                <td> <input class = "board_square" type = 'submit' value = '<%= board.ttt_board[0] %>' name = 'player_choice'> </td>
+                <td class = "columns"> <input class = "board_square" type = 'submit' value = '<%= board.ttt_board[1] %>' name = 'player_choice'> </td>
+                <td> <input class = "board_square" type = 'submit' value = '<%= board.ttt_board[2] %>' name = 'player_choice'> </td>
+            </tr>
+
+            <tr>
+                <td class = "rows"> <input class = "board_square" type = 'submit' value = '<%= board.ttt_board[3] %>' name = 'player_choice'> </td>
+                <td class = "columns rows"> <input class = "board_square" type = 'submit' value = '<%= board.ttt_board[4] %>' name = 'player_choice'> </td>
+                <td class = "rows"> <input class = "board_square" type = 'submit' value = '<%= board.ttt_board[5] %>' name = 'player_choice'> </td>
+            </tr>
+
+            <tr>
+                <td> <input class = "board_square" type = 'submit' value = '<%= board.ttt_board[6] %>' name = 'player_choice'> </td>
+                <td class = "columns"> <input class = "board_square" type = 'submit' value = '<%= board.ttt_board[7] %>' name = 'player_choice'> </td>
+                <td> <input class = "board_square" type = 'submit' value = '<%= board.ttt_board[8] %>' name = 'player_choice'> </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</center>
+
+</html>

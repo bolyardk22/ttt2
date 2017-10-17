@@ -1,0 +1,56 @@
+<link rel="stylesheet" type "text/css" href="css/style.css">
+
+<!doctype HTML5>
+
+<html lang="en">
+
+<head>
+</head>
+
+<div id="theNavBar">
+    <ul id="options">
+        <ul id="home"><a class="one" href="/">Tic-Tac-Toe</a></ul>
+        <div id="optionsdiv">
+            <ul id="options">
+                <li><a class="links" href="#">Social Media Links</a>
+                    <ul>
+                        <li><a class="facebook" href="https://www.facebook.com/minedmindsfoundation/" target = "_blank">Facebook</a></li>
+                        <li><a class="twitter" href= "https://twitter.com/MinedMinds" target = "_blank">Twitter</a></li>
+                    </ul>
+                </li>
+                <li><a class="about" href="http://www.minedminds.org" target = "_blank">About Mined Minds</a></li>
+                <li><a class="contact" href="http://www.minedminds.org/contact" target = "_blank">Contact Mined Minds</a></li>
+            </ul>
+        </div>
+    </ul>
+</div>
+
+<center>
+<body>
+    <h3><%=message%></h3>
+
+    <table id="table_size">
+        <tr>
+            <td><div class="win_display"><%=board.ttt_board[0]%></div></td>
+            <td class="middle_columns"><div class="win_display"><%=board.ttt_board[1]%></div></td>
+            <td><div class="win_display"><%=board.ttt_board[2]%></div></td>
+        </tr>
+
+        <tr>
+            <td class="top_bottom"><div class="win_display"><%=board.ttt_board[3]%></div></td>
+            <td class="middle_columns top_bottom"><div class="win_display"><%=board.ttt_board[4]%></div></td>
+            <td class="top_bottom"><div class="win_display"><%=board.ttt_board[5]%></div></td>
+        </tr>
+
+        <tr>
+            <td><div class="win_display"><%=board.ttt_board[6]%></div></td>
+            <td class="middle_columns"><div class="win_display"><%=board.ttt_board[7]%></div></td>
+            <td><div class="win_display"><%=board.ttt_board[8]%></div></td>
+        </tr>
+
+    </table>
+    <a href='/clear_sessions'>Start Over</a>
+</body>
+</center>
+
+</html>
