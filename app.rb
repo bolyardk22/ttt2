@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'pg'
 enable :sessions
 require_relative 'web_board.rb'
 require_relative 'player_classes.rb'
@@ -22,6 +23,8 @@ end
 post '/index' do
 	session[:rad_player_1] = params[:rad_player_1]
 	session[:rad_player_2] = params[:rad_player_2]
+	session[:username1] = params[:username1]
+	session[:username2] = params[:username2]
 	session[:human1] = 'no'
 	session[:human2] = 'no'
 
