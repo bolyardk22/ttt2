@@ -112,20 +112,18 @@ get '/check_game_state' do
 			win_or_lose2 = "win"
 		end
 
-		erb :the_end, :locals => {board: session[:board], message: message}
-
 		if session[:human1] == "yes"
-			db.exec("INSERT INTO tic_tac_toe(name, result_of_game, date_and_time) VALUES('#{session[:username1]}', '#{win_or_lose1}', '#{Date.new}')")
+			db.exec("INSERT INTO tic_tac_toe(name, result_of_game, date_and_time) VALUES('#{session[:username1]}', '#{win_or_lose1}', '#{Time.new}')")
 		end
 
 		if session[:human2] == "yes"
-			db.exec("INSERT INTO tic_tac_toe(name, result_of_game, date_and_time) VALUES('#{session[:username2]}', '#{win_or_lose2}', '#{Date.new}')")
+			db.exec("INSERT INTO tic_tac_toe(name, result_of_game, date_and_time) VALUES('#{session[:username2]}', '#{win_or_lose2}', '#{Time.new}')")
 		end
 
+		erb :the_end, :locals => {board: session[:board], message: message}
 	
 	elsif session[:board].full_board?
-		message = "The cat got this one!"	
-		erb :the_end, :locals => {board: session[:board], message: message}
+		message = "The cat got this one!"
 
 		win_or_lose1 = "draw"
 		win_or_lose2 = "draw"
@@ -137,6 +135,8 @@ get '/check_game_state' do
 		if session[:human2] == "yes"
 			db.exec("INSERT INTO tic_tac_toe(name, result_of_game, date_and_time) VALUES('#{session[:username2]}', '#{win_or_lose2}', '#{Date.new}')")
 		end
+
+		erb :the_end, :locals => {board: session[:board], message: message}
 	
 	else
 		if session[:active_player] == session[:player1]
