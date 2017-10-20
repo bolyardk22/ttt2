@@ -2,6 +2,17 @@ require 'sinatra'
 enable :sessions
 require_relative 'web_board.rb'
 require_relative 'player_classes.rb'
+require_relative 'local_env.rb' if File.exist?('./local_env.rb')
+
+db_params = {
+    host: ENV['host'],
+    port: ENV['port'],
+    dbname: ENV['db_name'],
+    user: ENV['user'],
+    password: ENV['password']
+}
+
+db = PG::Connection.new(db_params)
 
 get '/' do
 	session[:board] = Board.new
@@ -88,11 +99,41 @@ get '/check_game_state' do
 
 	if session[:board].winner?(session[:active_player].marker)
 		message = "#{session[:active_player].marker} is the winner!"
+
+		if session[:active_player] == session[:player1]
+			win_or_lose1 = "win"
+			win_or_lose2 = "lose"
+
+		else
+			win_or_lose1 = "lose"
+			win_or_lose2 = "win"
+		end
+
 		erb :the_end, :locals => {board: session[:board], message: message}
+
+		if session[:human1] == "yes"
+			db.exec("INSERT INTO tic_tac_toe(name, result_of_game, date_and_time) VALUES('#{session[:username1]}', '#{win_or_lose1}', '#{Date.new}')")
+		end
+
+		if session[:human2] == "yes"
+			db.exec("INSERT INTO tic_tac_toe(name, result_of_game, date_and_time) VALUES('#{session[:username2]}', '#{win_or_lose2}', '#{Date.new}')")
+		end
+
 	
 	elsif session[:board].full_board?
 		message = "The cat got this one!"	
 		erb :the_end, :locals => {board: session[:board], message: message}
+
+		win_or_lose1 = "draw"
+		win_or_lose2 = "draw"
+
+		if session[:human1] == "yes"
+			db.exec("INSERT INTO tic_tac_toe(name, result_of_game, date_and_time) VALUES('#{session[:username1]}', '#{win_or_lose1}', '#{Date.new}')")
+		end
+
+		if session[:human2] == "yes"
+			db.exec("INSERT INTO tic_tac_toe(name, result_of_game, date_and_time) VALUES('#{session[:username2]}', '#{win_or_lose2}', '#{Date.new}')")
+		end
 	
 	else
 		if session[:active_player] == session[:player1]

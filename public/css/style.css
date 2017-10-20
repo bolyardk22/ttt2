@@ -63,6 +63,11 @@ a.one:link, a.one:visited, a.one:hover {
   display: block;
 }
 
+h3 {
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+	font-size: 40px;
+}
+
 body {
 	background-color: #a3a3a3;
 	position: relative;
