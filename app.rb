@@ -167,3 +167,8 @@ get '/clear_sessions' do
 
 	redirect '/'
 end
+
+get '/game_data' do
+	ttt_table = db.exec("Select * From tic_tac_toe")
+	erb :data, :locals=>{ttt_table: ttt_table}
+end

@@ -1,0 +1,47 @@
+<link rel="stylesheet" type "text/css" href="css/style.css">
+
+<!doctype HTML5>
+
+<html lang="en">
+
+<head>
+</head>
+
+<div id="theNavBar">
+	<ul id="options">
+		<ul id="home"><a class="one" href="/">Tic-Tac-Toe</a></ul>
+		<div id="optionsdiv">
+			<ul id="options">
+				<li><a class="links" href="#">Social Media Links</a>
+					<ul>
+						<li><a class="facebook" href="https://www.facebook.com/minedmindsfoundation/" target = "_blank">Facebook</a></li>
+						<li><a class="twitter" href= "https://twitter.com/MinedMinds" target = "_blank">Twitter</a></li>
+					</ul>
+				</li>
+				<li><a class="about" href="http://www.minedminds.org" target = "_blank">About Mined Minds</a></li>
+				<li><a class="contact" href="http://www.minedminds.org/contact" target = "_blank">Contact Mined Minds</a></li>
+			</ul>
+		</div>
+	</ul>
+</div>
+
+<center>
+<body>
+	<h1>Game Stats</h1>
+
+	<table id="database_info">
+		<tr class="title_row">
+			<th>Name</th>
+			<th>Results</th>
+			<th>Date and time</th>
+		</tr>
+
+		<%ttt_table.each do |value|%>
+		<tr>
+			<td><%=value['name']%></td>
+			<td><%=value['result_of_game']%></td> 
+			<td><%=value['date_and_time']%></td>
+		</tr>
+		<%end%>
+	</table>
+</body>
