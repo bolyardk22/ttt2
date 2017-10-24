@@ -58,4 +58,41 @@ class TestTTT2Web < Minitest::Test
         board_variable.ttt_board = ["X", "X", "X", 4, 5, 6, 7, 8, 9]
         assert_equal(true, board_variable.winner?("X"))
     end
+
+    def test_one_open_spot
+        random_variable = Random_AI.new("X")
+        assert_equal(8, random_variable.get_move(["X", "O", "X", "X", "X", "X", "X", "X", 9]))
+    end
+
+    def test_two_spots
+        random_variable = Random_AI.new("X")
+        assert_equal(true, [0,1].include?(random_variable.get_move([1, 2, "X", "X", "X", "X", "X", "X", "X"])))
+    end
+
+    def test_two_spots2
+        random_variable = Random_AI.new("X")
+        assert_equal(true, [7,8].include?(random_variable.get_move(["X", "X", "X", "X", "X", "X", "X", 8, 9])))
+    end
+
+    def test_for_X
+        sequential_variable = Sequential.new("X")
+        assert_equal("X", sequential_variable.marker)
+    end
+
+    def test_for_first_available_spot
+        sequential_variable = Sequential.new("X")
+        assert_equal(0, sequential_variable.get_move([1, 2, 3, 4, 5, 6, 7, 8, 9]))
+    end
+
+    def test_for_second_available_spot
+        sequential_variable = Sequential.new("X")
+        assert_equal(1, sequential_variable.get_move(["X", 2, 3, 4, 5, 6, 7, 8, 9]))
+    end
+
+    def test_for_third_available_spot
+        sequential_variable = Sequential.new("X")
+        assert_equal(2, sequential_variable.get_move(["X", "O", 3, 4, 5, 6, 7, 8, 9]))
+    end
+
+    
 end
