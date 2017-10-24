@@ -94,5 +94,73 @@ class TestTTT2Web < Minitest::Test
         assert_equal(2, sequential_variable.get_move(["X", "O", 3, 4, 5, 6, 7, 8, 9]))
     end
 
-    
+    def test_opp
+       b_v = Impossible.new('X')
+        assert_equal('O', b_v.get_opponent("X") )
+    end
+
+    def test_opp_2
+        b_v = Impossible.new('O')
+        assert_equal('X', b_v.get_opponent("O") )
+    end
+
+    def test_win_block
+        bv = b_v = Impossible.new('X')
+        assert_equal(2, b_v.win_block_move(['X','X',3, 4, 5, 6, 7, 8, 9], "X"))
+    end
+
+    def test_win_block_2
+        bv = b_v = Impossible.new('X')
+        assert_equal(5, b_v.win_block_move([1,2,3,'X','X',6,7,8,9], "X"))
+    end
+
+    def test_win_block_3
+        bv = b_v = Impossible.new('X')
+        assert_equal(4, b_v.win_block_move([1,'X',3,'X',5,'X',7,8,9], "X"))
+    end
+
+    def test_fork_block
+        bv = b_v = Impossible.new('X')
+        assert_equal(3, b_v.block_fork([1, 2, 'O', 4, 'X', 6, 'O', 8, 9]))
+    end
+
+    def test_fork_block_2
+       bv = b_v = Impossible.new('X')
+       assert_equal(3, b_v.block_fork(['O', 2, 3, 4, 'X', 6, 7, 8, 'O']))
+    end
+
+    def test_fork_block_3
+        bv = b_v = Impossible.new('X')
+        assert_equal(10, b_v.block_fork(['','','','O','','','','O','']))
+    end
+
+    def test_edge
+        b_v = Impossible.new('O')
+        assert_equal(1, b_v.empty_side([1, 2, 3, 4, 5, 6, 7, 8, 9]))
+    end
+
+    def test_edge_2
+       b_v = Impossible.new('O')
+       assert_equal(3, b_v.empty_side([1,'X',3, 4, 5, 6, 7, 8, 9]))
+    end
+
+    def test_edge_3
+       b_v = Impossible.new('O')
+       assert_equal(7, b_v.empty_side([1,'X',3,'X',5,'X',7, 8, 9]))
+    end
+
+    def test_corn
+        b_v = Impossible.new('O')
+        assert_equal(0, b_v.empty_corner([1,2,'X',4, 5, 6, 7, 8, 9]))
+    end
+
+    def test_corn_2
+        b_v = Impossible.new('O')
+        assert_equal(6, b_v.empty_corner(['O','X','O',4, 5, 6, 7, 8, 9]))
+    end
+
+    def test_center
+        b_v = Impossible.new('X')
+        assert_equal(4, b_v.take_center([1, 2, 3, 4, 5, 6, 7, 8, 9]))
+    end
 end
